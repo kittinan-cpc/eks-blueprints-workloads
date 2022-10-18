@@ -5,4 +5,4 @@ spec:
     repoURL: https://github.com/kittinan-cpc/eks-blueprints-workloads
     targetRevision: main
   ingress:
-    host:
+    host: dev.example.com
