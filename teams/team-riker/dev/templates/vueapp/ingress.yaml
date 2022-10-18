@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: riker-ingress
+  name: riker-ingress-2
   namespace: team-riker
   annotations:
 {{ if eq .Values.spec.ingress.type "alb" }}  
