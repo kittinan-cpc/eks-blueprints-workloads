@@ -1,0 +1,35 @@
+huaylike-helm-chart:
+  name: "nginx"
+  image:
+    name: "docker.io/kittinanchanpreecha/vuejs-practice"
+    tag: "1.0.2"
+  nodeSelector:
+    tier: "huaylike"
+  resources:
+    limits:
+      cpu: 128m
+      memory: 128Mi
+    requests:
+      cpu: 2m
+      memory: 64Mi
+  configmap:
+    enabled: true
+  secret:
+    enabled: true
+  podAnnotations: []
+  tolerations: []
+  affinity: {}
+  ingress:
+    enabled: true
+    class: alb
+    albName: huaylike-nonprod
+    hosts:
+      - host: dev-nginx.huaylike-nonprod.com
+        paths:
+          - path: /
+            serviceName: nginx
+  hpa:
+    minReplicas: 2
+    maxReplicas: 5
+  containerPort: 80
+  healthCheck: /
