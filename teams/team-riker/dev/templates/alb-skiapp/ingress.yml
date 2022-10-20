@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: riker-ingress
+  name: vueapp-ingress
   namespace: team-riker
   annotations:
 {{ if eq .Values.spec.ingress.type "alb" }}  
@@ -22,7 +22,7 @@ spec:
 {{ end }}  
   rules:
 {{ if not (eq .Values.spec.ingress.host "dev.example.com") }}
-  - host: guestbook-ui.{{ .Values.spec.ingress.host }}
+  - host: vueapp.{{ .Values.spec.ingress.host }}
 {{ else }}
   - host:  
 {{ end }}  
@@ -32,7 +32,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: guestbook-ui
+            name: vueapp-service
             port: 
               number: 80
         

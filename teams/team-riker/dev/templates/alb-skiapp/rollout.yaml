@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: skiapp-rollout
+  name: vueapp-rollout
   namespace: team-riker
   labels:
-    app: skiapp
+    app: vueapp
 spec:
   replicas: 2
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: skiapp
+      app: vueapp
   template:
     metadata:
       labels:
-        app: skiapp
+        app: vueapp
     spec:
       containers:
       - name: vueapp
@@ -34,14 +34,14 @@ spec:
   strategy:
     blueGreen:
       autoPromotionEnabled: false
-      activeService: skiapp-service
-      previewService: skiapp-service-preview
+      activeService: vueapp-service
+      previewService: vueapp-service-preview
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: skiapp-service-preview
+  name: vueapp-service-preview
   namespace: team-riker
 spec:
   ports:
@@ -50,13 +50,13 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app: skiapp
+    app: vueapp
 
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: skiapp-ingress-preview
+  name: vueapp-ingress-preview
   namespace: team-riker
   annotations:
     alb.ingress.kubernetes.io/group.name: riker-preview
@@ -68,13 +68,13 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: #skiapprev.{{ .Values.spec.ingress.host }}
+  - host: #vueapprev.{{ .Values.spec.ingress.host }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: skiapp-service-preview
+            name: vueapp-service-preview
             port: 
               number: 80
