@@ -14,7 +14,7 @@ spec:
         app: vueapp
     spec:
       containers:
-      - image: docker.io/kittinanchanpreecha/vuejs-practice:1.0.0
+      - image: docker.io/kittinanchanpreecha/vuejs-practice:1.0.1
         name: vueapp
         ports:
         - containerPort: 80
