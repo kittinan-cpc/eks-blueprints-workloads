@@ -14,7 +14,7 @@ spec:
         app: skiapp
     spec:
       containers:
-      - name: skiapp
+      - name: docker.io/kittinanchanpreecha/vuejs-practice
         image: docker.io/kittinanchanpreecha/vuejs-practice:1.0.1
         ports:
         - containerPort: 80
