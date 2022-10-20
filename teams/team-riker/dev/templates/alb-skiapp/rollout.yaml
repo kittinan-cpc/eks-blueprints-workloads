@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: skiapp
-        image: sharepointoscar/skiapp:v2
+        image: docker.io/kittinanchanpreecha/vuejs-practice:1.0.2
         imagePullPolicy: Always
         ports:
         - name: http
