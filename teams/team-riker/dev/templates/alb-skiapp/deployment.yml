@@ -17,7 +17,7 @@ spec:
       - name: skiapp
         image: docker.io/kittinanchanpreecha/vuejs-practice:1.0.1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
             memory: "64Mi"
